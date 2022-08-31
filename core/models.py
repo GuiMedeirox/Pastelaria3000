@@ -43,7 +43,7 @@ class Fornada(models.Model):
   numFornada = models.IntegerField()
   qtdPizzas = models.IntegerField()
   def __str__(self):
-    return self.numFornada
+    return self.idFornada
 
 class Pedido(models.Model):
   idPedido = models.IntegerField(primary_key=True)
@@ -64,6 +64,9 @@ class BebidaPedida(models.Model):
   idPedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
   idBebida = models.ForeignKey(Bebida, on_delete=models.CASCADE)
   quantidade = models.IntegerField()
+  def __str__(self):
+    return self.idBebida
+
   class Meta:
     unique_together = ('idBebida','idPedido')  
 
@@ -80,6 +83,7 @@ class PizzaPedida_has_Ingrediente(models.Model):
   idPizzaPedida = models.ForeignKey(Pizza, on_delete=models.CASCADE)
   idIngrediente = models.ForeignKey(Ingrediente, on_delete=models.CASCADE)  
 
+  
   class Meta: 
     unique_together = ('idPizzaPedida', 'idIngrediente')
   
