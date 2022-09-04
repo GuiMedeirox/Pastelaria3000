@@ -30,14 +30,6 @@ class Pizza(models.Model):
 
 
 
-class Ingrediente(models.Model):
-  idIngrediente = models.IntegerField(primary_key=True)
-  nome = models.CharField('Nome', max_length=255)
-  preco = models.FloatField()
-
-  def __str__(self):
-    return self.nome
-
 class Fornada(models.Model):
   idFornada = models.IntegerField(primary_key=True)
   numFornada = models.IntegerField()
@@ -78,10 +70,6 @@ class PizzaPedida(models.Model):
   quantidade = models.IntegerField()
   def __str__(self):
     return self.idPizzaPedida
-
-class PizzaPedida_has_Ingrediente(models.Model):
-  idPizzaPedida = models.ForeignKey(Pizza, on_delete=models.CASCADE)
-  idIngrediente = models.ForeignKey(Ingrediente, on_delete=models.CASCADE)  
 
   
   class Meta: 
