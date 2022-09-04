@@ -71,7 +71,5 @@ class PizzaPedida(models.Model):
   def __str__(self):
     return self.idPizzaPedida
 
-  
-  class Meta: 
-    unique_together = ('idPizzaPedida', 'idIngrediente')
+
   
