@@ -5,7 +5,6 @@ from core.models import Cliente, Tamanho, Pizza, Fornada, Pedido, Bebida, Bebida
 admin.site.register(Cliente)
 admin.site.register(Tamanho)
 admin.site.register(Pizza)
-
 admin.site.register(Fornada)
 admin.site.register(Pedido)
 admin.site.register(Bebida)
