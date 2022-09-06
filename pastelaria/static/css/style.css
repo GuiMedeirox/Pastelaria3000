@@ -1168,8 +1168,9 @@ section {
   animation: animate-loading 1s linear infinite;
 }
 
-.book-a-table .php-email-form input,
-.book-a-table .php-email-form textarea {
+.book-a-table .php-email-form input
+.book-a-table .php-email-form textarea
+select {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;

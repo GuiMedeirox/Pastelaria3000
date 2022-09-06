@@ -12,35 +12,18 @@ class Cliente(models.Model):
     return self.nome
 
 
-class Tamanho(models.Model):
-  idTamanho = models.IntegerField(primary_key=True)
-  nome = models.CharField('Nome', max_length=255)
-  desconto = models.FloatField()
-
-  def __str__(self):
-    return self.nome
-
-
-class Pizza(models.Model):
-  idPizza = models.IntegerField(primary_key=True)
-  nome = models.CharField('Nome', max_length=255)
+class Pastel(models.Model):
+  idPastel = models.IntegerField(primary_key=True)
+  sabor = models.CharField('Sabor', max_length=255, default=None)
   precoBase = models.FloatField()
   def __str__(self):
-    return self.nome
+    return self.sabor
 
 
-
-class Fornada(models.Model):
-  idFornada = models.IntegerField(primary_key=True)
-  numFornada = models.IntegerField()
-  qtdPizzas = models.IntegerField()
-  def __str__(self):
-    return self.idFornada
 
 class Pedido(models.Model):
   idPedido = models.IntegerField(primary_key=True)
   idCliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-  idFornada = models.ForeignKey(Fornada, on_delete=models.CASCADE)
   dataHora = models.DateTimeField()
   def __str__(self):
     return self.idPedido
@@ -62,14 +45,13 @@ class BebidaPedida(models.Model):
   class Meta:
     unique_together = ('idBebida','idPedido')  
 
-class PizzaPedida(models.Model):
-  idPizzaPedida = models.IntegerField(primary_key=True)
+class PastelPedido(models.Model):
+  idPastelPedido = models.IntegerField(primary_key=True)
   idPedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
-  idPizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
-  idTamanho = models.ForeignKey(Tamanho, on_delete=models.CASCADE) 
+  idPastel = models.ForeignKey(Pastel, on_delete=models.CASCADE)
   quantidade = models.IntegerField()
   def __str__(self):
-    return self.idPizzaPedida
+    return self.idPastelPedido
 
 
   
