@@ -169,86 +169,19 @@
 
         <div class="row menu-container">
 
+
+          {% for listaSabor in saborPastel %}
+
           <div class="col-lg-6 menu-item filter-starters">
             <div class="menu-content">
-              <a href="#">Queijo</a><span>$5.95</span>
+              <a href="#">{{listaSabor}}</a><span>${{listaSabor.preco}}</span>
             </div>
             <div class="menu-ingredients">
               Queijo Muçarela, Orégano
             </div>
           </div>
 
-          <div class="col-lg-6 menu-item filter-specialty">
-            <div class="menu-content">
-              <a href="#">Pizza</a><span>$6.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Queijo Muçarela, Orégano, Mortadela, Tomate
-            </div>
-          </div>
-
-          <div class="col-lg-6 menu-item filter-starters">
-            <div class="menu-content">
-              <a href="#">Frango</a><span>$7.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Frango temperado
-            </div>
-          </div>
-
-          <div class="col-lg-6 menu-item filter-salads">
-            <div class="menu-content">
-              <a href="#">Frango com Catupiry</a><span>$8.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Frango, Catupiry
-            </div>
-          </div>
-
-          <div class="col-lg-6 menu-item filter-specialty">
-            <div class="menu-content">
-              <a href="#">Palmito</a><span>$9.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Palmito
-            </div>
-          </div>
-
-          <div class="col-lg-6 menu-item filter-starters">
-            <div class="menu-content">
-              <a href="#">Lombo c/ Queijo</a><span>$4.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Lombinho suíno, Queijo Muçarela
-            </div>
-          </div>
-
-          <div class="col-lg-6 menu-item filter-salads">
-            <div class="menu-content">
-              <a href="#">Carne</a><span>$9.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Carne Moída Temperada
-            </div>
-          </div>
-
-          <div class="col-lg-6 menu-item filter-salads">
-            <div class="menu-content">
-              <a href="#">Carne Seca</a><span>$9.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Carne Seca
-            </div>
-          </div>
-
-          <div class="col-lg-6 menu-item filter-specialty">
-            <div class="menu-content">
-              <a href="#">Carne Seca c/ Cheddar</a><span>$12.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Carne Seca, Cheddar
-            </div>
-          </div>
+          {% endfor %}
 
         </div>
 
@@ -270,14 +203,15 @@
         </div>
 
         <!-- Aqui vai ser o formulário para registrar um pedido. --> 
-        <form action="forms/book-a-table.php" method="post" role="form" class="php-email-form">
+        <form action="{% url 'fazerPedido' %}" method="post" role="form" class="php-email-form">
+          {% csrf_token %}
           <div class="row">
             <div class="col-lg-4 col-md-6 form-group">
               <input type="text" name="name" class="form-control" id="name" placeholder="Nome Completo" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
               <div class="validate"></div>
             </div>
             <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-              <input type="email" class="form-control" name="endereco" id="endereco" placeholder="Endereço" data-rule="endereco" data-msg="Please enter a valid email">
+              <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Endereço" data-rule="endereco" data-msg="Please enter a valid email">
               <div class="validate"></div>
             </div>
             <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">

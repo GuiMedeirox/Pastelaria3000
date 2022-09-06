@@ -16,3 +16,10 @@ def index(request):
 
 def gerenciarPedidos(request): 
   return render(request, 'gerenciarPedidos.html')
+
+def fazerPedido(request):
+  form = PedidoForm(request.POST)
+  if form.is_valid():
+    form.save()
+    return redirect('gerenciarPedidos.html')
+  return render(request, 'index.html', {'form': form})
