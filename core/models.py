@@ -30,16 +30,16 @@ class Bebida(models.Model):
 
 class Pedido(models.Model):
   idCliente = models.ForeignKey('Cliente', on_delete=models.CASCADE)
+  idPastelPedido = models.ForeignKey('PastelPedido', on_delete=models.CASCADE)
+  idBebidaPedida = models.ForeignKey('BebidaPedida', on_delete=models.CASCADE)
   dataHora = models.DateTimeField('DataHora', auto_now=True)
 
 class PastelPedido(models.Model):
-  idPedido = models.ForeignKey('Pedido', on_delete=models.CASCADE)
   idPastel = models.ForeignKey('Pastel', on_delete=models.CASCADE)
   idTamanho = models.ForeignKey('Tamanho', on_delete=models.CASCADE)
   quantia = models.IntegerField('Quantia', default=1)
 
 class BebidaPedida(models.Model):
-  idPedido = models.ForeignKey('Pedido', on_delete=models.CASCADE)
   idBebida = models.ForeignKey('Bebida', on_delete=models.CASCADE) 
   quantia = models.IntegerField('Quantia', default=1) 
   
