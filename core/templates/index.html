@@ -288,14 +288,14 @@
           <br> 
           <select class="form-control" >
             <option value="" selected disabled hidden>Escolha um sabor para o seu pastel</option>
-            {% for sabor in saborPastel %}
+            {% for sabor in Sabor %}
               <option>{{sabor}}</option>
             {% endfor %}
           </select>
           <br>
           <select class="form-control" >
             <option value="" selected disabled hidden>Escolha uma bebida</option>
-            {% for listaBebidas in bebida %}
+            {% for listaBebidas in Bebida %}
               <option>{{listaBebidas}}</option>
             {% endfor %}
           </select>
