@@ -291,8 +291,8 @@
             <div class="col-lg col-md-6 form-group">
               <select class="form-control" >
                 <option value="" selected disabled hidden>Escolha um sabor para o seu pastel</option>
-                {% for listaSabor in sabor %}
-                  <option>{{sabor}}</option>
+                {% for listaSabor in saborPastel %}
+                  <option>{{listaSabor}}</option>
                 {% endfor %}
               </select>
             </div>
@@ -300,12 +300,12 @@
               <select class="form-control" >
                 <option value="" selected disabled hidden>Tamanho</option>
                 {% for listaTamanhos in tamanho %}
-                  <option>{{listaTamanho}}</option>
+                  <option>{{listaTamanhos}}</option>
                 {% endfor %}
               </select>
             </div>
             <div class="col-lg-2 col-md-6 form-group mt-3 mt-md-0">
-              <input type="number" max="10" class="form-control" name="quantidade" id="quantidade" placeholder="quantidade" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <input type="number" max="10" class="form-control" name="quantidade" id="quantidade" placeholder="nº de pastéis" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
               <div class="validate"></div>
             </div>
           </div>
@@ -322,7 +322,7 @@
               </select>
             </div>
             <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-              <input type="number" max="10" class="form-control" name="quantidade" id="quantidade" placeholder="quantidade" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <input type="number" max="10" class="form-control" name="quantidade" id="quantidade" placeholder="nº de bebidas" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
               <div class="validate"></div>
             </div>
           </div>
