@@ -7,47 +7,28 @@ class Cliente(models.Model):
   telefone = models.CharField('Telefone', max_length=255)
   endereco = models.CharField('Endereço', max_length=255)
 
-  def __str__(self):
-    return self.nome
-
-class Sabor(models.Model):
-  nome = models.CharField(max_length=255)
+class Tamanho(models.Model):
+  tamanho = models.CharField('Tamanho', max_length=255)
 
 class Pastel(models.Model):
-  sabor = models.ForeignKey(Sabor, on_delete=models.CASCADE)
-  precoBase = models.FloatField()
-  def __str__(self):
-    return self.sabor
-
-
-class Pedido(models.Model):
-  idCliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-  dataHora = models.DateTimeField()
-  def __str__(self):
-    return self.idPedido
+  sabor = models.CharField('Sabor', max_length=255)
+  preco = models.FloatField('Preco', default=0)
 
 class Bebida(models.Model):
-  nome = models.CharField('Nome', max_length=255)
-  preco = models.FloatField()
-  def __str__(self):
-    return self.nome
+  nomeBebida = models.CharField('NomeBebida', max_length=255) 
+  preco = models.FloatField('Preco', default=0)
 
-class BebidaPedida(models.Model):
-  idPedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
-  idBebida = models.ForeignKey(Bebida, on_delete=models.CASCADE)
-  quantidade = models.IntegerField()
-  def __str__(self):
-    return self.idBebida
-
-  class Meta:
-    unique_together = ('idBebida','idPedido')  
+class Pedido(models.Model):
+  idCliente = models.ForeignKey('Pedido', on_delete=models.CASCADE)
+  dataHora = models.DateTimeField('DataHora', auto_now=True)
 
 class PastelPedido(models.Model):
-  idPedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
-  idPastel = models.ForeignKey(Pastel, on_delete=models.CASCADE)
-  quantidade = models.IntegerField()
-  def __str__(self):
-    return self.idPastelPedido
+  idPedido = models.ForeignKey('Pedido', on_delete=models.CASCADE)
+  idPastel = models.ForeignKey('Pastel', on_delete=models.CASCADE)
+  idTamanho = models.ForeignKey('Tamanho', on_delete=models.CASCADE)
+  quantia = models.IntegerField('Quantia', default=1)
 
-
-  
+class BebidaPedida(models.Model):
+  idPedido = models.ForeignKey('Pedido', on_delete=models.CASCADE)
+  idBebida = models.ForeignKey('Bebida', on_delete=models.CASCADE) 
+  quantia = models.IntegerField('Quantia', default=1) 
