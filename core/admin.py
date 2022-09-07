@@ -1,5 +1,5 @@
 from django.contrib import admin
-from core.models import Cliente, Tamanho, Pastel, Pedido, Bebida, BebidaPedida, PastelPedido
+from core.models import Cliente, Tamanho, Pastel, Pedido, Bebida
 from django.apps import apps
 
 # Register your models here.

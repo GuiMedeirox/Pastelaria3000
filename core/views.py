@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from core.models import Pastel, Bebida, Tamanho
+from django.shortcuts import render, redirect
+from core.models import *
 # Create your views here.
 
 def index(request):
@@ -17,9 +17,22 @@ def index(request):
 def gerenciarPedidos(request): 
   return render(request, 'gerenciarPedidos.html')
 
-def fazerPedido(request):
-  form = PedidoForm(request.POST)
-  if form.is_valid():
-    form.save()
-    return redirect('gerenciarPedidos.html')
-  return render(request, 'index.html', {'form': form})
+
+def FazerPedido(request):
+    if request.is_valid():
+        Pedido.save()
+         
+
+def create(request):
+    
+    
+  if request.method=="POST":
+      sabor=request.POST['sabor']
+      tamanho=request.POST['tamanho']
+      quantidadePastel=request.POST['quantidadePastel']
+      bebida=request.POST['bebida']
+      quantidadeBebida=request.POST['quantidadeBebida']
+      obj=Pedido.create(idPastel=sabor,idTamanho=tamanho,quantidadePastel=quantidadePastel,bebida=bebida,quantidadeBebida=quantidadeBebida)
+      obj.save()
+      return redirect("gerenciar")   
+  return render(request, 'gerenciarPedidos.html')

@@ -60,7 +60,7 @@
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Início</a></li>
           <li><a class="nav-link scrollto" href="#menu">Cardápio</a></li>
-          <li><a class="nav-link scrollto" href="gerenciarPedidos.html">Gerenciar</a></li>
+          <li><a class="nav-link scrollto" href="gerenciarPedidos">Gerenciar</a></li>
 
 
 
@@ -177,7 +177,7 @@
               <a href="#">{{listaSabor}}</a><span>${{listaSabor.preco}}</span>
             </div>
             <div class="menu-ingredients">
-              Queijo Muçarela, Orégano
+              {% comment %} Queijo Muçarela, Orégano {% endcomment %}
             </div>
           </div>
 
@@ -187,9 +187,6 @@
 
       </div>
     </section><!-- End Menu Section -->
-
-    <!-- ======= Specials Section ======= -->
-  <!-- End Specials Section -->
 
     <!-- ======= Events Section ======= -->
 
@@ -203,27 +200,11 @@
         </div>
 
         <!-- Aqui vai ser o formulário para registrar um pedido. --> 
-        <form action="{% url 'fazerPedido' %}" method="post" role="form" class="php-email-form">
+        <form method="POST" role="form" class="php-email-form">
           {% csrf_token %}
           <div class="row">
-            <div class="col-lg-4 col-md-6 form-group">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Nome Completo" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-              <div class="validate"></div>
-            </div>
-            <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-              <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Endereço" data-rule="endereco" data-msg="Please enter a valid email">
-              <div class="validate"></div>
-            </div>
-            <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-              <input type="text" class="form-control" name="phone" id="phone" placeholder="Telefone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-              <div class="validate"></div>
-            </div>
-          </div>
-          <br> 
-        
-          <div class="row">
             <div class="col-lg col-md-6 form-group">
-              <select class="form-control" >
+              <select class="form-control" name="sabor">
                 <option value="" selected disabled hidden>Escolha um sabor para o seu pastel</option>
                 {% for listaSabor in saborPastel %}
                   <option>{{listaSabor}}</option>
@@ -231,7 +212,7 @@
               </select>
             </div>
             <div class="col-lg-4 col-md-6 form-group">
-              <select class="form-control" >
+              <select class="form-control" name="tamanho">
                 <option value="" selected disabled hidden>Tamanho</option>
                 {% for listaTamanhos in tamanho %}
                   <option>{{listaTamanhos}}</option>
@@ -239,7 +220,7 @@
               </select>
             </div>
             <div class="col-lg-2 col-md-6 form-group mt-3 mt-md-0">
-              <input type="number" max="10" min="0" step="1" oninput="(validity.valid)||(value='');" class="form-control" name="quantidade" id="quantidade" placeholder="nº de pastéis" data-rule="minlen:4" data-msg="Please enter at least 1 chars">
+              <input type="number" max="10" min="0" step="1" oninput="(validity.valid)||(value='');" class="form-control" name="quantidadePastel" id="quantidade" placeholder="nº de pastéis" data-rule="minlen:4" data-msg="Please enter at least 1 chars">
               <div class="validate"></div>
             </div>
           </div>
@@ -248,7 +229,7 @@
 
           <div class="row">
             <div class="col-lg col-md-6 form-group">
-              <select class="form-control" >
+              <select class="form-control" name="bebida">
                 <option value="" selected disabled hidden>Escolha uma bebida</option>
                 {% for listaBebidas in bebida %}
                   <option>{{listaBebidas}}</option>
@@ -256,14 +237,16 @@
               </select>
             </div>
             <div class="col-lg-2 col-md-6 form-group mt-3 mt-md-0">
-              <input type="number" max="10" min="0" step="1" oninput="(validity.valid)||(value='');" class="form-control" name="quantidade" id="quantidade" placeholder="nº de bebidas" data-rule="minlen:4" data-msg="Please enter at least 1 chars">
+              <input type="number" max="10" min="0" step="1" oninput="(validity.valid)||(value='');" class="form-control" name="quantidadeBebida" id="quantidade" placeholder="nº de bebidas" data-rule="minlen:4" data-msg="Please enter at least 1 chars">
               <div class="validate"></div>
             </div>
           </div>
           
           
           <br>
-          <div class="text-center"><button type="submit">Fazer Pedido</button></div>
+          
+          <div class="text-center"><button type="submit"><a href="{% url 'fazerPedido' %}">Fazer Pedido</button></a></div>
+          
         </form>
     </section><!-- End Book A Table Section -->
 

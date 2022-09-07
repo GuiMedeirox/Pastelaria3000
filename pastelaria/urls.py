@@ -20,6 +20,6 @@ from core import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
-    path('fazerPedido', views.fazerPedido, name='fazerPedido'),
-    path('gerenciarPedidos.html', views.gerenciarPedidos),
+    path('fazerPedidos', views.create, name='fazerPedido'),
+    path('gerenciarPedidos', views.gerenciarPedidos, name="gerenciar"),
 ]
