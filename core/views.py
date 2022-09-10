@@ -12,14 +12,14 @@ def index(request):
 
 # CRUD dos Pastéis
 
-def gerenciarPedidos(request): 
+def gerenciarPasteis(request): 
   pasteis = Pastel.objects.all()
   formPastel = pastelForm(request.POST or None)
   if formPastel.is_valid():
     formPastel.save()
     return redirect("index")
   pacote = {'formPastel':formPastel, 'pasteis':pasteis}
-  return render(request, 'gerenciarPedidos.html', pacote) 
+  return render(request, 'gerenciarPasteis.html', pacote) 
 
 def EditarPastel(request, id):
   pasteis = Pastel.objects.get(pk=id)

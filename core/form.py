@@ -9,4 +9,4 @@ class pastelForm(ModelForm):
 class bebidaForm(ModelForm):
   class Meta: 
     model = Bebida
-    fields = ["nomeBebida","preco"]    
+    fields = ["nomeBebida","preco","descricao"]    

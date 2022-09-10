@@ -25,6 +25,7 @@ class Pastel(models.Model):
 class Bebida(models.Model):
   nomeBebida = models.CharField('NomeBebida', max_length=255, blank=True) 
   preco = models.FloatField('Preco', default=0, blank=True)
+  descricao = models.CharField('Descricao', max_length=255, blank=True)
   def __str__(self):
       return self.nomeBebida
 

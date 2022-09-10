@@ -36,9 +36,11 @@
     {%endfor%}
   </table>
 
-  <form method="POST"> 
+  <form method="POST" class="form-inline"> 
     {% csrf_token %}
-    {{formPastel}}
+    {{formPastel}} 
+    <br>
+    <br>
     <button type="submit" class="btn btn-dark">Cadastrar Pastel</button>
   </form>
 

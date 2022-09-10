@@ -5,7 +5,7 @@ from .views import *
 urlpatterns = [
     path('', index, name="index"),
     
-    path('gerenciarPedidos', gerenciarPedidos, name="gerenciar"),
+    path('gerenciarPasteis', gerenciarPasteis, name="gerenciar"),
     path('editarPastel/<int:id>', EditarPastel, name="editarPastel"),
     path('delete/<int:id>', DeletarPastel, name="deletarPastel"),
 
