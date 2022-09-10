@@ -20,26 +20,24 @@
 <body>
   <table class="table table-hover">
     <tr>
-      <th> Sabor do Pastel </th>
-      <th> Ingredientes </th>
+      <th> Nome da Bebida </th>
       <th> Preço </th>
       <th> Opções </th>
     </tr>
 
-    {%for pastel in pasteis%}
+    {%for bebida in bebidas%}
     <tr> 
-      <td>{{ pastel.sabor}} </td>
-      <td>{{ pastel.ingrediente}} </td>
-      <td>{{ pastel.preco}} </td>
-      <td> <a href="{%url 'editarPastel' pastel.id%}">Editar</a> <a href="{%url 'deletarPastel' pastel.id%}">Excluir</a> </td>
+      <td>{{bebida.nomeBebida}} </td>
+      <td>{{bebida.preco}} </td>
+      <td> <a href="{%url 'editarBebida' bebida.id%}">Editar</a> <a href="{%url 'deletarBebida' bebida.id%}">Excluir</a> </td>
     </tr> 
     {%endfor%}
   </table>
 
   <form method="POST"> 
     {% csrf_token %}
-    {{formPastel}}
-    <button type="submit" class="btn btn-dark">Cadastrar Pastel</button>
+    {{formBebida}}
+    <button type="submit" class="btn btn-dark">Cadastrar Bebida</button>
   </form>
 
 

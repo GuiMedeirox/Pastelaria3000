@@ -60,17 +60,14 @@
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Início</a></li>
           <li><a class="nav-link scrollto" href="#menu">Cardápio</a></li>
-          <li><a class="nav-link scrollto" href="gerenciarPedidos">Gerenciar</a></li>
 
-
-
-     
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="#book-a-table" class="book-a-table-btn scrollto">Fazer Pedido</a>
-
+      <a href="{%url 'gerenciar'%}" class="book-a-table-btn scrollto">Pastéis</a>
+      <a href="{%url 'gerenciarBebidas'%}" class="book-a-table-btn scrollto">Bebidas</a>
+ {% comment %} mudar a maldita rota do segundo botão {% endcomment %}
     </div>
   </header><!-- End Header -->
 
@@ -91,7 +88,6 @@
                 <p class="animate__animated animate__fadeInUp">A melhor pastelaria da região agora tem um site, faça um pedido já!</p>
                 <div>
                   <a href="#menu" class="btn-menu animate__animated animate__fadeInUp scrollto">Nosso Cardápio</a>
-                  <a href="#book-a-table" class="btn-book animate__animated animate__fadeInUp scrollto">Fazer Pedido</a>
                 </div>
               </div>
             </div>
@@ -162,22 +158,38 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>Dê uma olhada em nosso <span>Cardápio</span></h2>
+          <h2><span>Pasteís</span></h2>
         </div>
-
-        
-
         <div class="row menu-container">
 
 
-          {% for listaSabor in saborPastel %}
+          {% for listaSabor in pasteis %}
 
           <div class="col-lg-6 menu-item filter-starters">
             <div class="menu-content">
-              <a href="#">{{listaSabor}}</a><span>${{listaSabor.preco}}</span>
+              <a href="#">{{listaSabor.sabor}}</a><span>${{listaSabor.preco}}</span>
             </div>
             <div class="menu-ingredients">
-              {% comment %} Queijo Muçarela, Orégano {% endcomment %}
+              {{listaSabor.ingrediente}}
+            </div>
+          </div>
+
+          {% endfor %}
+
+        </div>
+        
+
+        <div class="section-title">
+          <h2><span>Bebidas</span></h2>
+        </div>
+             
+        <div class="row menu-container">
+
+          {% for listaBebida in bebidas %}
+          
+          <div class="col-lg-6 menu-item filter-starters">
+            <div class="menu-content">
+              <a href="#">{{listaBebida.nomeBebida}}</a><span>${{listaBebida.preco}}</span>
             </div>
           </div>
 
@@ -187,93 +199,6 @@
 
       </div>
     </section><!-- End Menu Section -->
-
-    <!-- ======= Events Section ======= -->
-
-    <!-- ======= Book A Table Section ======= -->
-    <section id="book-a-table" class="book-a-table">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Fazer <span>Pedido</span></h2>
-          <p>Preencha os campos e detalhe bem o seu pedido</p>
-        </div>
-
-        <!-- Aqui vai ser o formulário para registrar um pedido. --> 
-        <form method="POST" role="form" class="php-email-form">
-          {% csrf_token %}
-          <div class="row">
-            <div class="col-lg col-md-6 form-group">
-              <select class="form-control" name="sabor">
-                <option value="" selected disabled hidden>Escolha um sabor para o seu pastel</option>
-                {% for listaSabor in saborPastel %}
-                  <option>{{listaSabor}}</option>
-                {% endfor %}
-              </select>
-            </div>
-            <div class="col-lg-4 col-md-6 form-group">
-              <select class="form-control" name="tamanho">
-                <option value="" selected disabled hidden>Tamanho</option>
-                {% for listaTamanhos in tamanho %}
-                  <option>{{listaTamanhos}}</option>
-                {% endfor %}
-              </select>
-            </div>
-            <div class="col-lg-2 col-md-6 form-group mt-3 mt-md-0">
-              <input type="number" max="10" min="0" step="1" oninput="(validity.valid)||(value='');" class="form-control" name="quantidadePastel" id="quantidade" placeholder="nº de pastéis" data-rule="minlen:4" data-msg="Please enter at least 1 chars">
-              <div class="validate"></div>
-            </div>
-          </div>
-
-          <br>
-
-          <div class="row">
-            <div class="col-lg col-md-6 form-group">
-              <select class="form-control" name="bebida">
-                <option value="" selected disabled hidden>Escolha uma bebida</option>
-                {% for listaBebidas in bebida %}
-                  <option>{{listaBebidas}}</option>
-                {% endfor %}
-              </select>
-            </div>
-            <div class="col-lg-2 col-md-6 form-group mt-3 mt-md-0">
-              <input type="number" max="10" min="0" step="1" oninput="(validity.valid)||(value='');" class="form-control" name="quantidadeBebida" id="quantidade" placeholder="nº de bebidas" data-rule="minlen:4" data-msg="Please enter at least 1 chars">
-              <div class="validate"></div>
-            </div>
-          </div>
-          
-          
-          <br>
-          
-          <div class="text-center"><button type="submit"><a href="{% url 'fazerPedido' %}">Fazer Pedido</button></a></div>
-          
-        </form>
-    </section><!-- End Book A Table Section -->
-
-
-
-
-    <!-- ======= Gallery Section ======= -->
-  <!-- End Gallery Section -->
-
-    <!-- ======= Chefs Section ======= -->
-  <!-- End Chefs Section -->
-
-    <!-- ======= Testimonials Section ======= -->
-    <!-- End testimonial item -->
-
-<!-- End testimonial item -->
-
-         <!-- End testimonial item -->
-
-          <!-- End testimonial item -->
-
-           <!-- End testimonial item -->
-
-      <!-- End Testimonials Section -->
-
-    <!-- ======= Contact Section ======= -->
-  <!-- End Contact Section -->
 
   </main><!-- End #main -->
 
